@@ -12,7 +12,10 @@
  
 
 
-Constraints:
+## Constraints:
 
-1 <= tokens.length <= 104
-tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
+### 1 <= tokens.length <= 104
+### tokens[i] is either an operator: "+", "-", "*", or "/", or an integer in the range [-200, 200].
+
+![image](https://user-images.githubusercontent.com/94298791/236273151-445a8677-112d-49f2-a8b3-173b5daca804.png)
+
