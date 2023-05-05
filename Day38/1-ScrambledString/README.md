@@ -9,3 +9,4 @@
 * Apply step 1 recursively on each of the two substrings x and y.
 ### Given two strings s1 and s2 of the same length, return true if s2 is a scrambled string of s1, otherwise, return false.
 
+![image](https://user-images.githubusercontent.com/94298791/236491734-f7440c4d-aeb8-4092-942d-24ec755e55a1.png)
