@@ -1,5 +1,5 @@
 <h2><a href="https://leetcode.com/problems/majority-element-ii/">229. Majority Element II </a>
-[Click here]()
+
 ### Given an integer array of size n, find all elements that appear more than ⌊ n/3 ⌋ times.
 
 <p>&nbsp;</p>
