@@ -5,16 +5,14 @@
     n/3 = 2 elements which are appear min 3 time will be the ans so 3+3+3 = 9 but no of should 
     be 8 so it is clear at max 2 elements will be there. 
     
-    So we will 
-    1 -> take a vector ans and start traversing 
-    2 -> check if it is empty or not if it is empty or ans.back() != nums[i] 
-    3 -> then we will check the count of nums[i] in the array if it is greater
-        than n/3 then we will push it into the ans vector.
-
+    1 -> Take the ans vector.
+    2 -> Start traversing the array and check if nums[i] == nums[j] then increment the count.
+    3 -> If count > 3 then push the element int the ans vector. 
+    
     Time Complexity : O(n^2)
-    Space Complexity : O(1)
-
-    */ 
+    Space Complexity : O(n)
+    
+*/ 
 #include<bits/stdc++.h>
 class Solution {
 public:
@@ -41,7 +39,71 @@ public:
     }
 };
 
-/*Approach 2: Using Hash_Map
+/*Approach 2: Using Sorting
+    1 -> Sort the array.
+    2 -> Take two variables and initialize them with 0 and 1.
+    3 -> Start traversing the array and check if nums[i] == nums[0] then increment the count1
+        else if nums[i] == nums[1] then increment the count2.
+    4 -> If count1 == 0 then nums[i] will be the first element and increment the count1.
+    5 -> If count2 == 0 then nums[i] will be the second element and increment the count2.
+    6 -> If nums[i] != nums[0] && nums[i] != nums[1] then decrement the count1 and count2.
+    7 -> Now we have two elements which are appear more than n/3 time in the array.
+    8 -> Now we will check the count of both the elements in the array if it is greater than n/3
+        then we will push it into the ans vector.
+    
+    Time Complexity : O(nlogn)
+    Space Complexity : O(1)
+    */
+
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ans;
+        sort(nums.begin(),nums.end());
+        int count1 = 0, count2 = 0, first = INT_MAX, second = INT_MAX;
+        for(int i=0; i<n; i++){
+            if(nums[i]==first){
+                count1++;
+            }
+            else if(nums[i]==second){
+                count2++;
+            }
+            else if(count1==0){
+                first = nums[i];
+                count1++;
+            }
+            else if(count2==0){
+                second = nums[i];
+                count2++;
+            }
+            else{
+                count1--;
+                count2--;
+            }
+        }
+        count1 = 0, count2 = 0;
+        for(int i=0; i<n; i++){
+            if(nums[i]==first){
+                count1++;
+            }
+            else if(nums[i]==second){
+                count2++;
+            }
+        }
+        if(count1>n/3){
+            ans.push_back(first);
+        }
+        if(count2>n/3){
+            ans.push_back(second);
+        }
+        return ans;
+    }
+};
+
+
+
+/*Approach 3: Using Hash_Map
     1 -> Take the ans vector and hash map.
     2 -> Start Traversing array increment the count of element in the map.
     3 -> If count > 3 then push the element int the ans vector. 
@@ -64,3 +126,64 @@ public:
         }
         return ans;
     }
+
+/*Approach 4: Using Moore Voting Algorithm
+    1 -> Take two variables and initialize them with 0 and 1.
+    2 -> Start traversing the array and check if nums[i] == nums[0] then increment the count1
+        else if nums[i] == nums[1] then increment the count2.
+    3 -> If count1 == 0 then nums[i] will be the first element and increment the count1.
+    4 -> If count2 == 0 then nums[i] will be the second element and increment the count2.
+    5 -> If nums[i] != nums[0] && nums[i] != nums[1] then decrement the count1 and count2.
+    6 -> Now we have two elements which are appear more than n/3 time in the array.
+    7 -> Now we will check the count of both the elements in the array if it is greater than n/3
+        then we will push it into the ans vector.
+    
+    Time Complexity : O(n)
+    Space Complexity : O(1)
+    */
+
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> ans;
+        int count1 = 0, count2 = 0, first = INT_MAX, second = INT_MAX;
+        for(int i=0; i<n; i++){
+            if(nums[i]==first){
+                count1++;
+            }
+            else if(nums[i]==second){
+                count2++;
+            }
+            else if(count1==0){
+                first = nums[i];
+                count1++;
+            }
+            else if(count2==0){
+                second = nums[i];
+                count2++;
+            }
+            else{
+                count1--;
+                count2--;
+            }
+        }
+        count1 = 0, count2 = 0;
+        for(int i=0; i<n; i++){
+            if(nums[i]==first){
+                count1++;
+            }
+            else if(nums[i]==second){
+                count2++;
+            }
+        }
+        if(count1>n/3){
+            ans.push_back(first);
+        }
+        if(count2>n/3){
+            ans.push_back(second);
+        }
+        return ans;
+    }
+};
+
