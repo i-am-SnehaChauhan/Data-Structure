@@ -5,3 +5,4 @@
 
 
 * The 100 Days of Code challenge is a self-directed commitment by developers to build strong and consistent coding habits.
+* I will be spending each day working on problem solving and personal projects to improve my skills and push my boundaries.
