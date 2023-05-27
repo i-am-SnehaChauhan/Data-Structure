@@ -11,7 +11,7 @@ Approach:
    to rot the oranges.
 
    Time Complexity: O(m*n)
-   Space Complexity: O(m+n)
+   Space Complexity: O(m*n)
 */
 
 #include<bits/stdc++.h>
